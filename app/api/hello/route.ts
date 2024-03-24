@@ -1,16 +1,14 @@
 import { MsEdgeTTS } from "msedge-tts";
-import type { NextApiRequest, NextApiResponse } from "next";
+
 import fs from "fs";
+import { NextRequest, NextResponse } from "next/server";
 const tts = new MsEdgeTTS();
 
 type ResponseData = {
   message: string;
 };
 
-export async function POST(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
+export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
   await tts.setMetadata(
     "en-US-SteffanNeural",
     MsEdgeTTS.OUTPUT_FORMATS.WEBM_24KHZ_16BIT_MONO_OPUS
