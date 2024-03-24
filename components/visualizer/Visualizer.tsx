@@ -13,7 +13,7 @@ export default function Visualizer() {
         message: talk.value,
       }),
     }).then((res) => res.json());
-
+    console.log(response.data);
     const buffer = Buffer.from(response.data, "binary");
 
     const blob = new Blob([buffer], { type: "audio/webm" });
